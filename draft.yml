@@ -1,0 +1,36 @@
+models:
+  Models\Category:
+    parent_id: id foreign:categories nullable
+    lft: integer unsigned nullable
+    rgt: integer unsigned nullable
+    depth: integer unisgned nullable
+    name: string
+    slug: string unique
+    timestamps: true
+    softDeletes: true
+    relationships:
+      hasMany: Article
+
+  Models\Article:
+    category_id: id foreign
+    title: string
+    slug: string unique default:''
+    content: tetxt
+    image: string nullable
+    status: enum:PULISHED,DRAFT
+    date: date
+    featured: boolean default:0
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsToMany: Tag
+  Models\Tag:
+    name: string
+    slug: string unique
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsToMany: Article
+
+seeders: Article, Category, Tag
+

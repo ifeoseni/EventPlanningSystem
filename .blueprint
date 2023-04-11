@@ -1,0 +1,19 @@
+created:
+    - database/factories/Models/CategoryFactory.php
+    - database/factories/Models/ArticleFactory.php
+    - database/factories/Models/TagFactory.php
+    - database/migrations/2023_04_04_102054_create_categories_table.php
+    - database/migrations/2023_04_04_102055_create_articles_table.php
+    - database/migrations/2023_04_04_102056_create_tags_table.php
+    - database/migrations/2023_04_04_102057_create_article_tag_table.php
+    - app/Models/Models/Category.php
+    - app/Models/Models/Article.php
+    - app/Models/Models/Tag.php
+    - database/seeders/ArticleSeeder.php
+    - database/seeders/CategorySeeder.php
+    - database/seeders/TagSeeder.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable' }
+    Models\Category: { parent_id: 'id foreign:categories nullable', lft: 'integer unsigned nullable', rgt: 'integer unsigned nullable', depth: 'integer unisgned nullable', name: string, slug: 'string unique', timestamps: timestamps, softdeletes: softDeletes, relationships: { hasMany: Article } }
+    Models\Article: { category_id: 'id foreign', title: string, slug: "string unique default:''", content: tetxt, image: 'string nullable', status: 'enum:PULISHED,DRAFT', date: date, featured: 'boolean default:0', timestamps: timestamps, softdeletes: softDeletes, relationships: { belongsToMany: Tag } }
+    Models\Tag: { name: string, slug: 'string unique', timestamps: timestamps, softdeletes: softDeletes, relationships: { belongsToMany: Article } }
