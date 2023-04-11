@@ -133,12 +133,6 @@ a {
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('addEventType') }}">Event Type</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('addVendorType') }}">Vendor Type</a>
-                </li>
 
                 @if(Auth::user()->role == 2){{-- Auth::id() == 1 for event owners --}}
 
@@ -183,14 +177,20 @@ a {
                     </li>
                 @elseif (Auth::user()->role  == 4){{-- for Admin --}}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.homepage') }}">Admin</a>
+                        <a class="nav-link" href="{{ route('admin.homepage') }}">Home Page </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Users</a>
+                        <a class="nav-link" href="{{ route('addEventCenterAdmin') }}">Add Event Center</a>
                     </li>
                 @else
                     I don't have any records!
                 @endif
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('addEventType') }}">Event Type</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('addVendorType') }}">Vendor Type</a>
+                </li>
 
 
               <li class="nav-item">

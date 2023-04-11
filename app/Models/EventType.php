@@ -13,10 +13,10 @@ class EventType extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'event_types';
+    // protected $table = 'event_types';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
-    protected $guarded = ['id'];
+    // protected $guarded = ['id'];
     protected $fillable = [
         'eventname',
         'eventdescription',

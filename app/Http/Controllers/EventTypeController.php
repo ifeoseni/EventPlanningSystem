@@ -44,7 +44,6 @@ class EventTypeController extends Controller
 
         ]);
 
-
          $eventType = EventType::create([
              'eventname' => $request->eventname,
              'eventdescription' => $request->eventdescription,
@@ -53,7 +52,7 @@ class EventTypeController extends Controller
          ]);
 
         if($eventType){
-            return  redirect('add-event-type')->with('status','Event Type '.$eventType["eventname"].'Added Successfully');
+            return  redirect('add-event-type')->with('status','Event Type '.$eventType["eventname"].' Added Successfully');
         }
     }
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\EventTypeController;
 use App\Http\Controllers\VendorTypeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TellStoryController;
+use App\Http\Controllers\EventCenterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +48,9 @@ Route::post('/add-vendor-type', [VendorTypeController::class, 'store'])->name('a
 
 # })->middleware('auth','role:4');
 
-Route::get('/Auth', [AdminController::class, 'index'])->name('admin.homepage')->middleware('auth');
+Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.homepage');
+Route::get('/admin/add-event-center', [EventCenterController::class, 'create'])->name('addEventCenterAdmin');
+Route::post('/admin/add-event-center', [EventCenterController::class, 'store'])->name('addEventCenterAdmin.post');
 
 
 //Route::post('/add-vendor-type', [VendorTypeController::class, 'store'])->name('admin.homepage.post');

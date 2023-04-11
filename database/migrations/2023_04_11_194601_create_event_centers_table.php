@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('latitude');
             $table->string('longitude');
             $table->string('state');
+            $table->string('lga');
+            $table->string('eventcenterslug')->unique();
             $table->string('country');
+            $table->string('addedby');
             $table->timestamps();
         });
     }

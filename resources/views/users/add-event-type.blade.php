@@ -27,7 +27,7 @@
 
                             <div class="form-group row">
                                 <label for="eventname"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('eventname') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Event Name') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="eventname" type="text"
@@ -44,7 +44,7 @@
 
                             <div class="form-group row">
                                 <label for="eventdescription"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('eventdescription') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Event Description') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="eventdescription" type="text"
@@ -61,7 +61,7 @@
 
                             <div class="form-group row">
                                 <label for="eventslug"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('eventslug') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Event Slug') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="eventslug" type="text"
