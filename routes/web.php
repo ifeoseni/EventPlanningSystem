@@ -39,6 +39,7 @@ Route::get('/add-event-type', [EventTypeController::class, 'create'])->name('add
 Route::post('/add-event-type', [EventTypeController::class, 'store'])->name('addEventType.post');
 Route::get('tell-your-story',[TellStoryController::class,'accessStoryForm'])->name('tellStory');
 Route::post('tell-your-story',[TellStoryController::class,'store'])->name('tellStory.post');
+Route::get('tell-story/{id}',[TellStoryController::class,'seeStory'])->name('seeStory');
 
 //Vendor Type without authentication
 // Route::get('/add-vendor-type', [VendorTypeController::class, 'create'])->name('addVendorType');

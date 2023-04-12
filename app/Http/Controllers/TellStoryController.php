@@ -8,6 +8,7 @@ use App\Models\TellStory;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\File; //validate file
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\DB;
 
 
 class TellStoryController extends Controller
@@ -72,6 +73,11 @@ class TellStoryController extends Controller
 
 
     // }
+
+    public function seeStory($id){
+        $storyid = TellStory::find($id);//DB::select('select * from tell_stories where id = ?', $id);
+        return view('tellstory', ['singlestory' => $storyid]);
+    }
     public function store(Request $request)
     {
         // Validate the incoming request
