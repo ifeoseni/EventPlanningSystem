@@ -33,24 +33,44 @@ Route::post('/register', [AuthController::class, 'register'])->name('registerEve
 // Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //Event Type
-Route::get('/add-event-type', [EventTypeController::class, 'create'])->name('addEventType');
+Route::get('/add-event-type', [EventTypeController::class, 'create'])->name('addEventType');//->middleware(['auth']) this works when you are using controller;
 Route::post('/add-event-type', [EventTypeController::class, 'store'])->name('addEventType.post');
 Route::get('tell-your-story',[TellStoryController::class,'accessStoryForm'])->name('tellStory');
 Route::post('tell-your-story',[TellStoryController::class,'store'])->name('tellStory.post');
 
-//Vendor Type
-Route::get('/add-vendor-type', [VendorTypeController::class, 'create'])->name('addVendorType');
-Route::post('/add-vendor-type', [VendorTypeController::class, 'store'])->name('addVendorType.post');
+//Vendor Type without authentication
+// Route::get('/add-vendor-type', [VendorTypeController::class, 'create'])->name('addVendorType');
+// Route::post('/add-vendor-type', [VendorTypeController::class, 'store'])->name('addVendorType.post');
 
 //Admin Account 4
 # Route::group(['prefix'=>'admin','middleware'=>'auth'], function(){
 //     //Route::get('/Auth', [AdminController::class, 'index'])->name('admin.homepage');
 
 # })->middleware('auth','role:4');
+///before middleware for admin
+// Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.homepage');
+// Route::get('/admin/add-event-center', [EventCenterController::class, 'create'])->name('addEventCenterAdmin');
+// Route::post('/admin/add-event-center', [EventCenterController::class, 'store'])->name('addEventCenterAdmin.post');
 
-Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.homepage');
-Route::get('/admin/add-event-center', [EventCenterController::class, 'create'])->name('addEventCenterAdmin');
-Route::post('/admin/add-event-center', [EventCenterController::class, 'store'])->name('addEventCenterAdmin.post');
+Route::middleware(['auth', 'adminusers'])->group(function () {//roleAdmin in kernel and we created middleware Admin
+    Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.homepage');
+    Route::get('/admin/add-event-center', [EventCenterController::class, 'create'])->name('addEventCenterAdmin');
+    Route::post('/admin/add-event-center', [EventCenterController::class, 'store'])->name('addEventCenterAdmin.post');
+});
 
+Route::middleware(['auth', 'eventownerusers'])->group(function () {
 
-//Route::post('/add-vendor-type', [VendorTypeController::class, 'store'])->name('admin.homepage.post');
+});
+
+Route::middleware(['auth', 'vendorusers'])->group(function () {
+
+});
+
+Route::middleware(['auth', 'eventcenterusers'])->group(function () {
+
+});
+
+Route::middleware(['auth', 'allusers'])->group(function () {
+    Route::get('/add-vendor-type', [VendorTypeController::class, 'create'])->name('addVendorType');
+    Route::post('/add-vendor-type', [VendorTypeController::class, 'store'])->name('addVendorType.post');
+});

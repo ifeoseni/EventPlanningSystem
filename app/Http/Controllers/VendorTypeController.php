@@ -25,6 +25,11 @@ class VendorTypeController extends Controller
         return view('users.add-vendor-type');
     }
 
+    public function welcome()
+    {
+        return view('welcome');
+    }
+
     /**
      * Store a newly created resource in storage.
      */

@@ -7,7 +7,7 @@
             <div class="col-md-12">
 
                 @auth
-                    The user is authenticated...
+                    The user is authenticated... {{ Auth::id() }}
                 @endauth
 
                 @guest
