@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Hash;
-
+use Illuminate\Http\RedirectResponse;
 use App\Models\User;
 
 class AuthController extends Controller
@@ -72,6 +72,17 @@ class AuthController extends Controller
     // Authentication failed...
     return redirect()->route('login')->with('error', 'Invalid email or password.');
 }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/login')->with('status','You have successfully logged out of the system. Have a great day.');;
+    }
 
     public function index()
     {
