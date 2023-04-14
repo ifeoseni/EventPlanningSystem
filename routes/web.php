@@ -9,7 +9,7 @@ use App\Http\Controllers\VendorTypeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TellStoryController;
 use App\Http\Controllers\EventCenterController;
-
+use App\Http\Controllers\VendorWebsiteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,10 +63,12 @@ Route::middleware(['auth', 'adminusers'])->group(function () {//roleAdmin in ker
 
 Route::middleware(['auth', 'eventownerusers'])->group(function () {
 
+
 });
+Route::get('/vendor/build-websites', [VendorWebsiteController::class, 'build'])->name('buildVendorWebsite');
 
 Route::middleware(['auth', 'vendorusers'])->group(function () {
-
+    Route::get('/vendor/build-website', [VendorWebsiteController::class, 'build'])->name('buildVendorWebsite');
 });
 
 Route::middleware(['auth', 'eventcenterusers'])->group(function () {

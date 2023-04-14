@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-// use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\VendorType;
+use App\Models\VendorWebsite;
 
-class VendorTypeController extends Controller
+class VendorWebsiteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,12 +22,14 @@ class VendorTypeController extends Controller
      */
     public function create()
     {
-        return view('users.add-vendor-type');
+        //
     }
 
-    public function welcome()
+    public function build()
     {
-        return view('welcome');
+        //
+        $vendortype = VendorType::all();
+        return view('users.add-vendor-website',['vendortype' =>$vendortype]);
     }
 
     /**
@@ -35,25 +37,7 @@ class VendorTypeController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'servicename' => 'required|string|max:255',
-            'servicedescription' => 'required|string|max:255',
-            'serviceslug' => 'required|string|max:255',
-
-        ]);
-
-
-
-         $vendorType = VendorType::create([
-             'servicename' => $request->servicename,
-             'servicedescription' => $request->servicedescription,
-             'serviceslug' => $request->serviceslug,
-             'addedby' => Auth::id(),
-         ]);
-
-        if($vendorType){
-            return  redirect('add-vendor-type')->with('status','Vendor Type '. $vendorType["servicename"].' Added Successfully');
-        }
+        //
     }
 
     /**

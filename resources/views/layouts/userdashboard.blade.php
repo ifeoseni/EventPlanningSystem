@@ -160,7 +160,7 @@ a {
 
                 @elseif (Auth::user()->role  == 1){{--Auth::id() == 1) for event vendors --}}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Role 1 vendor Users</a>
+                    <a class="nav-link" href="{{ route('buildVendorWebsite')}}">Build Your Website</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Users</a>
