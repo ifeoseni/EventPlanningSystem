@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('servicename')->unique();
             $table->string('servicedescription')->unique();
             $table->string('serviceslug')->unique();
-            $table->string('addedby');
+
+            $table->unsignedBigInteger('addedby');
+            $table->foreign('addedby')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

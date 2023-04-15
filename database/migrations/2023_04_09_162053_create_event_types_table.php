@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('eventname')->unique();
             $table->string('eventdescription')->unique();
             $table->string('eventslug')->unique();
-            $table->string('addedby');
+            $table->unsignedBigInteger('addedby');
+            $table->foreign('addedby')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

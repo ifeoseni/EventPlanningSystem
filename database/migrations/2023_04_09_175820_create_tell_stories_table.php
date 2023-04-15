@@ -19,7 +19,8 @@ return new class extends Migration
             $table->Integer('estimatedattendees');
             $table->string('dateithappened');
             $table->string('images');
-            $table->string('addedby');
+            $table->unsignedBigInteger('addedby');
+            $table->foreign('addedby')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

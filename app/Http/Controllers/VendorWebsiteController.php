@@ -37,7 +37,65 @@ class VendorWebsiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the incoming request
+        $request->validate([
+            'storytitle' => 'required|string|max:255',
+            'storydescription' => 'required|string|max:255',
+            'whereithappened' => 'required|string|max:255',
+            'dateithappened'  => 'required|string|max:255',
+            'estimatedattendees' => 'required|Integer|max:255',
+            'images.*' => 'required|image|max:2048', // max size of 2MB
+            // Add more validation rules for other fields as needed
+        ]);
+        $imagesname = [];
+
+        // Get the uploaded image(s)
+        $images = $request->file('images');
+
+        // Check if multiple images were uploaded
+        if (is_array($images)) {
+            // If multiple images, loop through each image and store them
+            foreach ($images as $image) {
+                $filename = time() . '_' . $image->getClientOriginalName();
+                $image->storeAs('public/eventstories', $filename);
+                // Create a new TellStories instance and save the details
+                array_push($imagesname,$filename);
+
+            }
+
+            $tellStories = new TellStory([
+                'images' => implode(',', $imagesname),
+                'storytitle' => $request->storytitle,
+                'storydescription' => $request->storydescription,
+                'whereithappened' => $request->whereithappened,
+                'dateithappened' => $request->dateithappened,
+                'estimatedattendees' => $request->estimatedattendees,
+                'addedby' => Auth::id(),
+                // 'date' => now(), // Add the current date
+                // Add other details as needed
+            ]);
+            $tellStories->save();
+
+        } else {
+            // If a single image, store it
+            $filename = time() . '_' . $images->getClientOriginalName();
+            $images->storeAs('public/eventstories', $filename);
+            // Create a new TellStories instance and save the details
+            $tellStories = new TellStory([
+                'images' => $filename,
+                'storytitle' => $request->storytitle,
+                'storydescription' => $request->storydescription,
+                'whereithappened' => $request->whereithappened,
+                'dateithappened' => $request->dateithappened,
+                'estimatedattendees' => $request->estimatedattendees,
+                'addedby' => Auth::id(),
+                //'date' => now(), // Add the current date
+                // Add other details as needed
+            ]);
+            $tellStories->save();
+        }
+
+        return redirect()->back()->with('s');
     }
 
     /**

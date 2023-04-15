@@ -26,10 +26,11 @@ return new class extends Migration
             $table->string('instagram');
             $table->json('linkedin');
             $table->string('images');
-            $table->string('addedby');
             $table->string('logo');
+            $table->string('color');
             $table->string('vendortype');
-
+            $table->unsignedBigInteger('addedby');
+            $table->foreign('addedby')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string('lga');
             $table->string('eventcenterslug')->unique();
             $table->string('country');
-            $table->string('addedby');
+            $table->unsignedBigInteger('addedby');
+            $table->foreign('addedby')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

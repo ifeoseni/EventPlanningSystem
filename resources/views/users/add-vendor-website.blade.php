@@ -295,6 +295,24 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="color"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Brand Colour/ Favourite Color') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="color"  type="color"
+                                        class="form-control @error('color') is-invalid @enderror" name="color" value="#FF0000"
+                                         >
+
+
+                                    @error('color')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
 
 
 
