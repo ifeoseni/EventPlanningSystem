@@ -124,7 +124,7 @@
 
         <footer class="bg-light py-3">
             <div class="container">
-                <p class="text-muted text-center">Your footer content goes here.</p>
+                <p class="text-muted text-center">Footer Page.</p>
             </div>
         </footer>
     </div>

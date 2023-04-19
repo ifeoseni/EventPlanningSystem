@@ -2,6 +2,13 @@
 
 @section('content')
     <div class="container">
+        <div class="row justify-content-center ">
+            <div class="col-12-text-center">
+                <h2 class="text-center">Welcome </h2>
+                <p class="text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint debitis doloribus nesciunt error cum magni quia nostrum voluptates vero tempore harum iusto aliquid laborum quisquam, velit placeat fuga temporibus corrupti?</p>
+                <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nisi obcaecati magnam illum ex asperiores accusamus, alias at ratione molestias laborum quod quam blanditiis minus nostrum impedit veritatis dignissimos ipsam.</p>
+            </div>
+        </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -38,6 +45,23 @@
                                         value="{{ old('email') }}" required autocomplete="email">
 
                                     @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="username"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Preferred User Name') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="username" type="text"
+                                        class="form-control @error('username') is-invalid @enderror" name="username"
+                                        value="{{ old('username') }}" required autocomplete="username">
+
+                                    @error('username')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -108,4 +132,20 @@
                                 </div>
                             </div>
                         </form>
-                    @endsection
+                    </div>
+                    <div class="card-footer">
+                        <div class="form-group row">
+                            <div class="col-md-12 text-center">
+                                @if (Route::has('login'))
+                                    <a class="btn btn-link" href="{{ route('login') }}">
+                                        {{ __('Create Account') }}
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

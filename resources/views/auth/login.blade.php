@@ -3,6 +3,13 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            <div class="col-12-text-center">
+                <h2>Welcome </h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint debitis doloribus nesciunt error cum magni quia nostrum voluptates vero tempore harum iusto aliquid laborum quisquam, velit placeat fuga temporibus corrupti?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nisi obcaecati magnam illum ex asperiores accusamus, alias at ratione molestias laborum quod quam blanditiis minus nostrum impedit veritatis dignissimos ipsam.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Login') }}</div>
@@ -80,9 +87,22 @@
                                             {{ __('Forgot Your Password?') }}
                                         </a>
                                     @endif
+
                                 </div>
                             </div>
                         </form>
+
+                    </div>
+                    <div class="card-footer">
+                        <div class="form-group row">
+                            <div class="col-md-12 text-center">
+                                @if (Route::has('registerEventUsers'))
+                                    <a class="btn btn-link" href="{{ route('registerEventUsers') }}">
+                                        {{ __('Create Account') }}
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

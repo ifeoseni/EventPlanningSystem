@@ -104,7 +104,7 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('State / Province Located') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="state" type="number"
+                                    <input id="state" type="text"
                                         class="form-control @error('state') is-invalid @enderror" name="state"
                                         value="{{ old('state') }}" required >
 
@@ -301,7 +301,7 @@
 
                                 <div class="col-md-6">
                                     <input id="color"  type="color"
-                                        class="form-control @error('color') is-invalid @enderror" name="color" value="#FF0000"
+                                        class="form-control @error('color') is-invalid @enderror" name="color"
                                          >
 
 

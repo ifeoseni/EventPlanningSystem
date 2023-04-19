@@ -26,6 +26,7 @@ class AuthController extends Controller
          $request->validate([
              'name' => 'required|string|max:255',
              'email' => 'required|string|email|max:255|unique:users',
+             'username' => 'required|string|max:255|unique:users',
              'password' => 'required|string|min:8|confirmed',
              'role' => 'required|integer|max:255',
          ]);
@@ -33,19 +34,13 @@ class AuthController extends Controller
          $user = User::create([
              'name' => $request->name,
              'email' => $request->email,
+             'username' => $request->username,
              'role' => $request->role,
              'password' => Hash::make($request->password),
          ]);
 
-        //  dd($request->role);
-        //  $user = new User;
-        //  $user->name = $request->name;
-        //  $user->email = $request->email;
-        //  $user->password = Hash::make($request->password);
-        //  $user->rolw = $user->role;
-        //  $user->save();
 
-         Auth::login($user);
+        //  Auth::login($user);
 
          return redirect('login')->with('status','New Account Created');//redirect()->intended('/dashboard');
      }

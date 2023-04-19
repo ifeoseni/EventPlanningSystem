@@ -65,16 +65,18 @@ Route::middleware(['auth', 'eventownerusers'])->group(function () {
 
 
 });
-Route::get('/vendor/build-websites', [VendorWebsiteController::class, 'build'])->name('buildVendorWebsite');
+Route::get('/vendors/build-websites', [VendorWebsiteController::class, 'build'])->name('buildVendorWebsite');
+Route::post('/vendors/build-websites', [VendorWebsiteController::class, 'store'])->name('buildVendorWebsite.post');
 
 Route::middleware(['auth', 'vendorusers'])->group(function () {
-    Route::get('/vendor/build-website', [VendorWebsiteController::class, 'build'])->name('buildVendorWebsite');
+    // Route::get('/vendor/build-website', [VendorWebsiteController::class, 'build'])->name('buildVendorWebsite');
 });
 
 Route::middleware(['auth', 'eventcenterusers'])->group(function () {
 
 });
 
+Route::get('/add-vendor-type', [VendorTypeController::class, 'create'])->name('addVendorType');
 Route::middleware(['auth', 'allusers'])->group(function () {
     Route::get('/add-vendor-type', [VendorTypeController::class, 'create'])->name('addVendorType');
     Route::post('/add-vendor-type', [VendorTypeController::class, 'store'])->name('addVendorType.post');

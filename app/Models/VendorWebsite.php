@@ -12,6 +12,7 @@ class VendorWebsite extends Model
     protected $fillable = [
         'name',
         'location',
+        'businessage',
         'state',
         'country',
         'aboutus',
@@ -22,6 +23,9 @@ class VendorWebsite extends Model
         'instagram',
         'linkedin',
         'images',
+        'logo',
+        'color',
+        'vendortype',
         'addedby',
 
     ];

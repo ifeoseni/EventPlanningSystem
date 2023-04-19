@@ -15,7 +15,7 @@ class VendorUsers
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!auth()->check() || Auth::user()->role  !== 1  ){//Auth::user()->role  == 1 for event vendor
+        if(!auth()->check() || Auth::user()->role  != 1  ){//Auth::user()->role  == 1 for event vendor
             abort(code: 403);
         }
         return $next($request);

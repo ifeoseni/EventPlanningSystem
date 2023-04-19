@@ -18,13 +18,13 @@ return new class extends Migration
             $table->string('businessage');
             $table->string('state');
             $table->string('country');
-            $table->json('aboutus');
-            $table->json('phone_number');
+            $table->string('aboutus');
+            $table->string('phone_number');
             $table->string('email');
             $table->string('facebook');
             $table->string('twitter');
             $table->string('instagram');
-            $table->json('linkedin');
+            $table->string('linkedin');
             $table->string('images');
             $table->string('logo');
             $table->string('color');
@@ -34,6 +34,8 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+
+
 
     /**
      * Reverse the migrations.
